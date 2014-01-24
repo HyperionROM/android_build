@@ -74,7 +74,7 @@ FORCE:
 
 # These goals don't need to collect and include Android.mks/CleanSpec.mks
 # in the source tree.
-dont_bother_goals := clean clobber dataclean installclean \
+dont_bother_goals := clean clobber magic dataclean installclean \
     help out \
     snod systemimage-nodeps \
     stnod systemtarball-nodeps \
@@ -931,6 +931,12 @@ clean:
 
 .PHONY: clobber
 clobber: clean
+
+# This is one step better then novo, only clearing target/product
+.PHONY: magic
+magic:
+	@rm -rf $(OUT_DIR)/target/product/*
+	@echo -e ${CL_GRN}"Target/Product directory removed."${CL_RST}	
 
 # The rules for dataclean and installclean are defined in cleanbuild.mk.
 
