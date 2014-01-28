@@ -74,7 +74,7 @@ FORCE:
 
 # These goals don't need to collect and include Android.mks/CleanSpec.mks
 # in the source tree.
-dont_bother_goals := clean clobber magic novo dataclean installclean \
+dont_bother_goals := clean clobber magic novo dirty dataclean installclean \
     help out \
     snod systemimage-nodeps \
     stnod systemtarball-nodeps \
@@ -943,6 +943,14 @@ novo:
 magic:
 	@rm -rf $(OUT_DIR)/target/product/*
 	@echo -e ${CL_GRN}"Target/Product directory removed."${CL_RST}	
+
+# Clears out zip and build.prop files for dirty builds
+.PHONY: dirty
+dirty:
+	@rm -rf $(OUT_DIR)/target/product/*/system/build.prop
+	@rm -rf $(OUT_DIR)/target/product/*/*.zip
+	@rm -rf $(OUT_DIR)/target/product/*/*.md5sum
+	@echo -e ${CL_GRN}"build.prop and zip files erased"${CL_RST}	
 
 # The rules for dataclean and installclean are defined in cleanbuild.mk.
 
