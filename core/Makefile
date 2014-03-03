@@ -1452,14 +1452,13 @@ HYPERION_TARGET_PACKAGE := $(PRODUCT_OUT)/hyperion-$(HYPERION_VERSION).zip
 
 .PHONY: otapackage bacon
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
-
 bacon: otapackage
 ifneq ($(TARGET_CUSTOM_RELEASETOOL),)
-@echo -e ${CL_YLW}"Running custom releasetool..."${CL_RST}
-$(hide) OTAPACKAGE=$(INTERNAL_OTA_PACKAGE_TARGET) APKCERTS=$(APKCERTS_FILE) $(TARGET_CUSTOM_RELEASETOOL)
+	@echo -e ${CL_YLW}"Running custom releasetool..."${CL_RST}
+	$(hide) OTAPACKAGE=$(INTERNAL_OTA_PACKAGE_TARGET) APKCERTS=$(APKCERTS_FILE) $(TARGET_CUSTOM_RELEASETOOL)
 else
-@echo -e ${CL_YLW}"Running releasetool..."${CL_RST}
-$(hide) OTAPACKAGE=$(INTERNAL_OTA_PACKAGE_TARGET) APKCERTS=$(APKCERTS_FILE) ./vendor/hyperion/tools/squisher
+	@echo -e ${CL_YLW}"Running releasetool..."${CL_RST}
+	$(hide) OTAPACKAGE=$(INTERNAL_OTA_PACKAGE_TARGET) APKCERTS=$(APKCERTS_FILE) ./vendor/hyperion/tools/squisher
 endif
 
 # -----------------------------------------------------------------
