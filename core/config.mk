@@ -497,7 +497,7 @@ RS_PREBUILT_COMPILER_RT := prebuilts/sdk/renderscript/lib/$(TARGET_ARCH)/libcomp
 # Rules for QCOM targets
 include $(BUILD_SYSTEM)/qcom_target.mk
 
-ifneq ($(CM_BUILD),)
+ifneq ($(HYPERION_BUILD),)
 ## We need to be sure the global selinux policies are included
 ## last, to avoid accidental resetting by device configs
 $(eval include vendor/cm/sepolicy/sepolicy.mk)
