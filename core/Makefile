@@ -1452,6 +1452,7 @@ HYPERION_TARGET_PACKAGE := $(PRODUCT_OUT)/hyperion-$(HYPERION_VERSION).zip
 
 .PHONY: otapackage bacon
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
+
 bacon: otapackage
 ifneq ($(TARGET_CUSTOM_RELEASETOOL),)
 @echo -e ${CL_YLW}"Running custom releasetool..."${CL_RST}
